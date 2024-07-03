@@ -1,18 +1,20 @@
 const express = require("express")
 const cors = require("cors")
 const db = require("./config/connection")
-const JournalController = require("./Controllers/journalController")
+const journalRouter = require("./routes/journalRoute")
+
 
 
 const app = express();
 const PORT = 8080;
+app.use(express.json());
 
 app.use(cors({
     origin: '*',
   }));
   
 
-app.get("/", JournalController.getJournals)
+app.use("/journal", journalRouter)
 
 
 
