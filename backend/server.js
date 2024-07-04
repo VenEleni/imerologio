@@ -2,6 +2,7 @@ const express = require("express")
 const cors = require("cors")
 const db = require("./config/connection")
 const journalRouter = require("./routes/journalRoute")
+const userRouter = require("./routes/userRoute")
 
 
 
@@ -15,6 +16,7 @@ app.use(cors({
   
 
 app.use("/journal", journalRouter)
+app.use("/user", userRouter)
 
 
 
