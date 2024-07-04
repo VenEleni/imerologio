@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import axios from "axios";
 import Footer from "./components/footer/footer";
@@ -8,25 +9,19 @@ import Register from "./components/register/register";
 import Navbar from "./components/navbar/navbar";
 import Calender from "./components/calender/calender";
 import Journals from "./components/journals/journals";
-
-
+import Header from "./components/Header";
 
 function App() {
-  const [msg, setMsg] = useState("");
-
-  const getJournals = async () => {
-    try {
-      const res = await axios.get("http://localhost:8080/");
-      setMsg(res.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <div className="App">
-      <button onClick={getJournals}>Check Connection</button>
-      <p>{msg}</p>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/journals" element={<Journals />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }
