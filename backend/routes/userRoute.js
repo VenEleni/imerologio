@@ -9,7 +9,8 @@ router.post("/login", UserController.login)
 router.delete("/delete/:id", UserController.deleteUser)
 
 //Update User Details
-router.put("/delete/:id", UserController.updateName)
+router.put("/update", UserController.updateName)
+router.put("/update/changepassword", UserController.changePassword)
 
 
 

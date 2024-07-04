@@ -14,7 +14,7 @@ const register = async (req, res) => {
       };
       await UserModel.create(newUser);
       res.status(201).json({msg: "User created successfully"});
-    });
+    }); 
   } catch (error) {
     console.log(error);
   }
@@ -33,6 +33,7 @@ const getUsers = async (req, res) => {
 const login = async (req, res) => {
   try {
     const user = await UserModel.findOne({ email: req.body.email });
+    console.log(user)
     if (user) {
       const match = await bcrypt.compare(req.body.password, user.password);
       console.log(match);
@@ -69,13 +70,56 @@ const deleteUser = async (req, res) => {
 
 const updateName = async (req, res) => {
   try {
-    const user = await UserModel.findOne({ email: req.body.email });
-    await UserModel.updateOne();
-    res
-      .status(200)
-      .json(
-        `The User with the email: "${user.email}" deleted successfully.`
-      );
+    const {email, password, newName, newLastname } = req.body
+    
+    //Find the user by email
+    const user = await UserModel.findOne({ email: email });
+    
+    //check for identity
+    if (user) {
+      const match = await bcrypt.compare(password, user.password);
+      console.log(match);
+      if (match) {
+
+        // if the user has given the correct credentials then change the name
+        await UserModel.updateOne({email: email}, {$set: {name: newName, lastname : newLastname}})  
+        res.status(200).json({msg: `Users's name successfully updated to ${newName} ${newLastname}`})      
+      } else {
+        res.status(401).send({ msg: "Password is Wrong! try again." });
+      }
+    } else {
+      res.status(401).send({ msg: "email is Wrong! try again." });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+const changePassword = async (req, res) => {
+  try {
+    const {email, password, newPassword} = req.body
+    console.log(`this the user before changing password ${email} ${password} ${newPassword}`)
+    //Find the user by email
+    const user = await UserModel.findOne({ email: email });
+    console.log(`the user is there ${user}`)
+    //check for identity
+    if (user) {
+      const match = await bcrypt.compare(password, user.password);
+      console.log(`the password is correct`);
+      
+      // if the user has given the correct credentials then change the password
+      if (match) {
+        bcrypt.hash(newPassword, 10, async function (err, hash) {
+          await UserModel.updateOne({email: email}, {$set: {password: hash}})  
+          res.status(200).json({msg: `Users's password changed successfully.`})  
+        });    
+      } else {
+        res.status(401).send({ msg: "Password is Wrong! try again." });
+      }
+    } else {
+      res.status(401).send({ msg: "email is Wrong! try again. " });
+    }
   } catch (error) {
     console.log(error);
   }
@@ -87,4 +131,5 @@ module.exports = {
   login,
   deleteUser,
   updateName,
+  changePassword,
 };
