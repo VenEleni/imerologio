@@ -1,31 +1,76 @@
 .container{
     width: 100%;
-    height: 10vh;
+    height: 15vh;
     position: relative;
     top: 0;
     left: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    background-color: #e5eeeb;
 }
 
 .container .wrapper {
     width: 80%;
     height: 100%;
-    display: flex;
-    flex-direction: row-reverse;
     align-items: center;
-
+    display: flex;
+    flex-direction: column;
 }
 
-.wrapper .logoutIcon{
-    font-size: 2rem;
+.container .EditorWrapper {
+    width: 80%;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar ul{
+    display: flex;
+}
+
+.navbar ul li{
+    padding-right: 3rem;
+}
+
+.logoutIcon{
+    font-size: 1.7rem;
     color: #10d48e;
-
+    
 }
 
-.wrapper .logoutIcon:hover{
-    font-size: 2rem;
+.logoutIcon:hover{
+    font-size: 1.7rem;
     color: #c21a1a;
+    cursor: pointer;
+}
+
+.logo{
+    width: 20rem;
+    display: block;
+    padding: 2rem;
+}
+
+.navbar ul{
+    list-style: none;
+}
+
+.navbar ul li a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.navbar ul li a:hover{
+    text-decoration: none;
+    color: #10d48e;
+}
+
+.Hiddennavbar{
+    display: none;
+}
+
+.Hiddenwrapper{
+    display: none;
 }
