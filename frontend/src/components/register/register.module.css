@@ -79,7 +79,7 @@
     flex-direction: row-reverse;
  }
  
-  button[type="submit"] {
+  .registerBtn {
     margin-top: 15px;
     width: 100%;
     padding: 10px;
@@ -90,7 +90,7 @@
     font-size: 16px;
   }
   
-  button[type="submit"]:hover {
+.registerBtn:hover {
     background-color: #28efa8;
   }
   
