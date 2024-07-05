@@ -1,0 +1,138 @@
+/* General Styles */
+.journalContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header,
+footer,
+.row1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.3rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.header a {
+  color: #000;
+  text-decoration: none;
+}
+
+.logo {
+  margin: 20px 0;
+  height: auto;
+  width: 299px;
+}
+
+.backIcon,
+.saveIcon,
+.logout {
+  font-size: 1.5rem; 
+  color: #009761;
+}
+
+.saveLabel {
+  text-decoration: none;
+  font-size: 1.2rem; 
+  color: #009761;
+}
+
+.row1 {
+  flex-direction: row;
+}
+
+/* Main Content Area */
+.noteContainer {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.noteWrapper {
+  width: 100%;
+  max-width: 800px;
+}
+
+textarea {
+  width: 100%;
+  height: 80vh;
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  resize: none;
+  outline: none;
+  scrollbar-width: none;
+  font-size: inherit;
+  border: none;
+}
+
+textarea:focus {
+  outline: none; 
+  border: 1px solid #ced4da;
+  border: none; 
+}
+
+.journalFooter {
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  text-align: center;
+  justify-content: center;
+}
+
+
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .backIcon,
+  .saveIcon {
+    font-size: 1.25rem;
+  }
+
+  header,
+  footer {
+    padding: 0.5rem;
+  }
+
+  .logo {
+    margin: 20px 0;
+    height: auto;
+    width: 170px;
+  }
+
+  textarea {
+    height: 70vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .backIcon,
+  .saveIcon {
+    font-size: 1rem;
+  }
+
+  header,
+  footer {
+    text-align: center;
+  }
+
+  .header a {
+    margin: 0.5rem 0;
+  }
+
+  textarea {
+    height: 60vh;
+  }
+}

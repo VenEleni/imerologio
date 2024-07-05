@@ -38,7 +38,7 @@ const login = async (req, res) => {
       const match = await bcrypt.compare(req.body.password, user.password);
       console.log(match);
       if (match) {
-        const token = jwt.sign({ userId: user._id }, "secret", {
+        const token = jwt.sign({ userId: user._id, userEmail: user.email, name:user.name}, "secret", {
           expiresIn: "3h",
         });
         res.status(200).json({ token: token });
@@ -70,10 +70,11 @@ const deleteUser = async (req, res) => {
 
 const updateName = async (req, res) => {
   try {
-    const {email, password, newName, newLastname } = req.body
+    const id = req.params.id
+    const { password, newName, newLastname } = req.body
     
     //Find the user by email
-    const user = await UserModel.findOne({ email: email });
+    const user = await UserModel.findOne({ _id: id });
     
     //check for identity
     if (user) {
@@ -82,7 +83,7 @@ const updateName = async (req, res) => {
       if (match) {
 
         // if the user has given the correct credentials then change the name
-        await UserModel.updateOne({email: email}, {$set: {name: newName, lastname : newLastname}})  
+        await UserModel.updateOne({$set: {name: newName, lastname : newLastname}})  
         res.status(200).json({msg: `Users's name successfully updated to ${newName} ${newLastname}`})      
       } else {
         res.status(401).send({ msg: "Password is Wrong! try again." });
@@ -98,10 +99,11 @@ const updateName = async (req, res) => {
 
 const changePassword = async (req, res) => {
   try {
-    const {email, password, newPassword} = req.body
-    console.log(`this the user before changing password ${email} ${password} ${newPassword}`)
+    const {password, newPassword} = req.body
+    const id = req.params.id
+    console.log(`this the user before changing password ${password} ${newPassword}`)
     //Find the user by email
-    const user = await UserModel.findOne({ email: email });
+    const user = await UserModel.findOne({ _id: id });
     console.log(`the user is there ${user}`)
     //check for identity
     if (user) {
@@ -111,7 +113,7 @@ const changePassword = async (req, res) => {
       // if the user has given the correct credentials then change the password
       if (match) {
         bcrypt.hash(newPassword, 10, async function (err, hash) {
-          await UserModel.updateOne({email: email}, {$set: {password: hash}})  
+          await UserModel.updateOne({$set: {password: hash}})  
           res.status(200).json({msg: `Users's password changed successfully.`})  
         });    
       } else {
