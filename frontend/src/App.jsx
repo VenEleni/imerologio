@@ -19,7 +19,10 @@ import NewJournal from "./components/newJournal/newJournal";
 function App() {
   return (
     <div className="App">
-      
+
+      {/* pass true to isEditor and the other Navbar will appear */}
+      <Navbar isEditor={false}/>
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
