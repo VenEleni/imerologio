@@ -1,0 +1,85 @@
+body {
+  background-color: #e5eeeb !important; 
+}
+
+.react-calendar {
+  background: #e5eeeb;
+  border: none;
+  line-height: 1.5em;
+  width: 60% !important;
+  padding-top: 10px;
+  margin: auto;
+  display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+
+.react-calendar__tile {
+  background: #ffffff;
+  border: 0.5px solid #e5eeeb; 
+  /* height: 6em; */
+  aspect-ratio: 1;
+}
+
+.react-calendar__tile:hover {
+  background: #e5eeeb !important;
+  color: black
+}
+
+.react-calendar__tile--active {
+  background: #ffffff;
+  color: black;
+}
+.react-calendar__tile:active{
+  background: #ade6cc !important;
+}
+
+.react-calendar__navigation button {
+  background: #ade6cc;
+  border: none;
+  border-radius: 5px;
+}
+
+
+/* hides the by default navigation */
+.react-calendar__navigation {
+  display: none;
+}
+
+/* hides the name of each day above the calendar */
+.react-calendar__month-view__weekdays {
+  display: none !important;
+}
+
+/* styling of the date above the calendar */
+.react-calendar__navigation__label__labelText{
+  font-weight: bold;
+  padding-left: 20px;
+  font-size: 20px;
+}
+
+.current-day-marker {
+  background-color: #28efa8; 
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

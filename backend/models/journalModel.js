@@ -18,10 +18,15 @@ const journalSchema = new Schema({
   photoUrl:{
     type : String
   },
+  user: { //connection between the two models -- DONE
+    type: Schema.Types.ObjectId, 
+    ref: "User",
+    required : true 
+  }
 }, {
     timestamps: true
 });
-///have to connect journals with users
+///have to connect journals with users -- DONE. || have to check if it works -- DONE
 
 const JournalModel = mongoose.model("JournalModel", journalSchema);
 
