@@ -10,7 +10,6 @@ export default function home() {
   return (
     <div className={classes.container}>
       <header className={classes.header}>
-        <img src={logo} alt="Imerologio" className={classes.logo} />
       </header>
       <div className={classes.bodyWrapper}>
         <div className={classes.topRow}>
