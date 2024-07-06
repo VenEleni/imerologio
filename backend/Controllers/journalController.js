@@ -5,7 +5,7 @@ const JournalModel = require("../models/journalModel");
 //function to get all the Journals of a user
 const getJournals = async (req, res) => {
   try {
-
+console.log(req.user.userId)
     const journals = await JournalModel.find({ user: req.user.userId });
 
     res.status(200).send(journals);

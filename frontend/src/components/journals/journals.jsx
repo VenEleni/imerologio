@@ -20,8 +20,7 @@ export default function Journals() {
 
   const getAllJournals = async () => {
     try {
-      await axios.get("http://localhost:8080/journal").then((res) => {
-        console.log(res.data);
+      await axios.get("http://localhost:8080/journal/" , {headers:{"x-auth-token": `${localStorage.getItem("token")}`}}).then((res) => {
         setJournals(res.data);
       });
     } catch (error) {
