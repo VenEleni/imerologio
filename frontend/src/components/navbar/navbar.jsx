@@ -1,13 +1,11 @@
-
 import React, { useEffect, useState } from "react";
 import classes from "./navbar.module.css";
 import { IoIosLogOut, IoIosArrowBack } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../images/logo.png";
+import logo from "../../assets/imerologio-logo.png";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
-
 
 export default function Navbar({ isEditor }) {
   const navigate = useNavigate();
@@ -16,6 +14,7 @@ export default function Navbar({ isEditor }) {
   const logout = () => {
     localStorage.removeItem("token");
     navigate("/");
+    window.location.reload();
   };
 
   const isLoggedIn = () => {
@@ -28,7 +27,8 @@ export default function Navbar({ isEditor }) {
     if (token) {
       try {
         const decodedToken = jwtDecode(token);
-        return decodedToken.userId;
+        // console.log(decodedToken.user.userId);
+        return decodedToken.user.userId;
       } catch (err) {
         console.error("Invaled Token", err);
         return null;
@@ -51,6 +51,7 @@ export default function Navbar({ isEditor }) {
       const userId = getUserIDfromtoken();
       if (userId) {
         const allUsers = await getUsers();
+        console.log("allUsers")
         const currentUser = allUsers.find((v) => v._id === userId);
         setUser(currentUser);
       }
@@ -64,11 +65,9 @@ export default function Navbar({ isEditor }) {
   };
 
   const login = () => {
-    
     navigate('/login');
   };
   const changepass = () => {
-    
     navigate('/changepassword');
   };
 

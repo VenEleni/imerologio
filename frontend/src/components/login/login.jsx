@@ -30,7 +30,7 @@ export default function Login() {
         }
         setEmail("");
         setPassword("");
-        navigate("/home");
+        navigate("/journals");
       }
     } catch (error) {
       console.log(error);

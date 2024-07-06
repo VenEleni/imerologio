@@ -1,5 +1,5 @@
 .header {
-  height: 15vh;
+  height: 20vh;
   width: 100%;
   background-color: #e5eeeb;
   display: flex;
@@ -19,7 +19,7 @@
 }
 
 .topRow {
-  height: 55vh;
+  height: 30vh;
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
@@ -41,11 +41,11 @@
 
 .right .photo{
     height: auto;
-    width: 650px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;    margin: 0 auto;
+    width: 400px;
 }
+
 .left {
-  padding: 60px;
+  padding: 10vw;
 }
 
 .left h1{
@@ -53,11 +53,11 @@
 }
 
 .left p {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .bottomRow {
-  height: 20vh;
+  height: 40vh;
   display: flex;
 }
 
@@ -70,7 +70,7 @@
 }
 
 .btn {
-  width: 700px;
+  width: 30vw;
   padding: 10px;
   background-color: #009761;
   color: white;
@@ -84,4 +84,8 @@
 
 .btn:hover {
   background-color: #10d48e;
+}
+
+.HiddenloginWrapper{
+  display: none;
 }
