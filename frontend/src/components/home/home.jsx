@@ -1,3 +1,4 @@
+
 import React from "react";
 import classes from "./home.module.css";
 import logo from "../../assets/imerologio-logo.png"
@@ -29,5 +30,7 @@ export default function home() {
         </div>
       </div>
     </div>
+
   );
 }
+
