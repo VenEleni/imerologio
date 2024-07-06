@@ -31,7 +31,7 @@ export default function Journals() {
   const DeleteJournal = async (_id) => {
     try {
       await axios
-        .delete(`http://localhost:8080/journal/delete/${_id}`)
+        .delete(`http://localhost:8080/journal/delete/${_id}`, {headers:{"x-auth-token": `${localStorage.getItem("token")}`}})
         .then((res) => {
           setJournals(journals.filter((journal) => journal._id !== _id));
         });
