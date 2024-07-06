@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import classes from "./navbar.module.css";
 import { IoIosLogOut, IoIosArrowBack } from "react-icons/io";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/imerologio-logo.png";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
@@ -51,7 +51,7 @@ export default function Navbar({ isEditor }) {
       const userId = getUserIDfromtoken();
       if (userId) {
         const allUsers = await getUsers();
-        console.log("allUsers")
+        console.log("allUsers");
         const currentUser = allUsers.find((v) => v._id === userId);
         setUser(currentUser);
       }
@@ -65,30 +65,38 @@ export default function Navbar({ isEditor }) {
   };
 
   const login = () => {
-    navigate('/login');
+    navigate("/login");
   };
   const changepass = () => {
-    navigate('/changepassword');
+    navigate("/changepassword");
   };
+
+  const getActiveClass = ({ isActive }) =>
+    isActive ? classes.active : undefined;
 
   return (
     <div className={classes.container}>
-
       {/* Navbar component for Normal view */}
       <div className={isEditor ? classes.Hiddenwrapper : classes.wrapper}>
-        <Link to="/">
+        <NavLink to="/">
           <img className={classes.logo} src={logo} alt="logo" />
-        </Link>
+        </NavLink>
         <nav className={isLoggedIn() ? classes.navbar : classes.Hiddennavbar}>
           <ul>
             <li>
-              <Link to="/journals">Journals</Link>
+              <NavLink to="/journals" className={getActiveClass}>
+                Journals
+              </NavLink>
             </li>
             <li>
-              <Link to="/calendar">Calendar</Link>
+              <NavLink to="/calendar" className={getActiveClass}>
+                Calendar
+              </NavLink>
             </li>
             <li>
-              <Link to="/search">Search</Link>
+              <NavLink to="/search" className={getActiveClass}>
+                Search
+              </NavLink>
             </li>
             <li>
               <span>{user ? "Hello " + user.name + "! " : ""}</span>
@@ -109,7 +117,6 @@ export default function Navbar({ isEditor }) {
           <span>{user ? "Hello " + user.name + "! " : ""}</span>
           <IoIosLogOut className={classes.logoutIcon} onClick={logout} />
         </div>
-
       </div>
     </div>
   );
