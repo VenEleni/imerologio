@@ -9,7 +9,6 @@ import Register from "./components/register/register";
 import Navbar from "./components/navbar/navbar";
 import Calender from "./components/calender/calender";
 import Journals from "./components/journals/journals";
-import Header from "./components/Header";
 import ChangePassword from "./components/changePassword/changePassword";
 import ChangeName from "./components/changeName/changeName";
 import NewJournal from "./components/newJournal/newJournal";
@@ -29,6 +28,7 @@ function App() {
         <Route path="/changeName" element={<ChangeName />} />
         <Route path="/newJournal" element={<NewJournal />} />
       </Routes>
+      <Footer/>
     </div>
   );
 }
