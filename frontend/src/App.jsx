@@ -9,7 +9,6 @@ import Register from "./components/register/register";
 import Navbar from "./components/navbar/navbar";
 import OurCalendar from "./components/calendar/calendar"
 import Journals from "./components/journals/journals";
-import Header from "./components/Header";
 import ChangePassword from "./components/changePassword/changePassword";
 import ChangeName from "./components/changeName/changeName";
 import NewJournal from "./components/newJournal/newJournal";

@@ -45,7 +45,7 @@ body {
 
 /* hides the by default navigation */
 .react-calendar__navigation {
-  display: none;
+  display: none !important;
 }
 
 /* hides the name of each day above the calendar */
