@@ -30,7 +30,7 @@ function App() {
         <Route path="/calendar" element={<OurCalendar />} />
 
       </Routes>
-      <Footer/>
+      
     </div>
   );
 }
