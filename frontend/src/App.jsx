@@ -10,6 +10,8 @@ import Journals from "./components/journals/journals";
 import ChangePassword from "./components/changePassword/changePassword";
 import ChangeName from "./components/changeName/changeName";
 import NewJournal from "./components/newJournal/newJournal";
+import EditJournal from "./components/editJournal/editJournal";
+import NotFound from "./components/NotFound/NotFound"
 
 function App() {
   return (
@@ -28,9 +30,10 @@ function App() {
         <Route path="/newJournal" element={<NewJournal />} />
 
         <Route path="/calendar" element={<OurCalendar />} />
+        <Route path="/editor/" element={<EditJournal />} />
+        <Route path="*" element={<NotFound />} />
 
       </Routes>
-      
     </div>
   );
 }

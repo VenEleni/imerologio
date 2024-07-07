@@ -1,36 +1,31 @@
 import React, { useState, useEffect, useRef } from "react";
-import classes from "./NewJournal.module.css";
+import classes from "./EditJournal.module.css";
 import { FaArrowLeft } from "react-icons/fa6";
 import { FaSignOutAlt } from "react-icons/fa";
 import { FiSave } from "react-icons/fi";
-import { IoMdClose } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 import { FaTags } from "react-icons/fa";
 import logo from "../../assets/imerologio-logo.png";
-import axios from "axios"
 
 import DatePicker from "react-datetime-picker";
 import "react-datetime-picker/dist/DateTimePicker.css";
 import "react-calendar/dist/Calendar.css";
 import "react-clock/dist/Clock.css";
-import Navbar from "../navbar/navbar";
+import axios from "axios";
 
-export default function NewJournal() {
+export default function EditJournal() {
   const navigate = useNavigate();
   const [text, setText] = useState("");
   const textAreaRef = useRef(null);
   const [date, setDate] = useState(new Date());
-  const [tags, setTags] = useState([])
-  const [photoUrl, setPhotoUrl] = useState("")
-  const [selectedValue, setSelectedValue] = useState([]);
-  const [showTagsPopup, setShowTagsPopup] = useState(true);
 
   const [tagValue, setTagValue] = useState("");
   const [tag, setTag] = useState([]); // Initialize as an empty array
   const [tagsPopup, setTagsPopup] = useState(false);
 
   const [emotion, setEmotion] = useState("");
+  const [photoUrl, setPhotoUrl] = useState("");
 
   const handleSignOut = () => {
     localStorage.removeItem("token");
@@ -74,18 +69,6 @@ export default function NewJournal() {
     return characters;
   };
 
-  function onSelect(selectedList, selectedItem) {
-    setSelectedValue(selectedList);
-}
-
-function onRemove(selectedList, removedItem) {
-  setSelectedValue(selectedList);
-}
-
-const toggleTagsPopup = () => {
-  setShowTagsPopup(!showTagsPopup);
-};
-
   const handleAddJournal = () => {
     if(text && tag && date && emotion && photoUrl) {
       try {
@@ -97,7 +80,7 @@ const toggleTagsPopup = () => {
           photoUrl: photoUrl,
         };
         axios
-          .post("http://localhost:8080/journal/create", newJournal, {
+          .post("http://localhost:8080/journal/", newJournal, {
             headers: { "x-auth-token": `${localStorage.getItem("token")}` },
           })
           .then((res) => {});
@@ -134,7 +117,6 @@ const toggleTagsPopup = () => {
           />
         </Link>
       </header>
-
       <div className={classes.row1}>
         <DatePicker
           className={classes.datePicker}
@@ -143,7 +125,6 @@ const toggleTagsPopup = () => {
           value={date}
           locale="ge-GE"
         />
-
         <Link onClick={handleAddJournal} className={classes.saveLabel}>
           Save! <FiSave className={classes.saveIcon} />
         </Link>
@@ -164,7 +145,6 @@ const toggleTagsPopup = () => {
 
       <footer className={classes.journalFooter}>
         <div>
-
           <input
             type="text"
             className={classes.photoUrlInput}
@@ -217,5 +197,3 @@ const toggleTagsPopup = () => {
     </div>
   );
 }
-
-
