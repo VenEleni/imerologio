@@ -48,7 +48,7 @@ export default function Journals() {
   };
 
   const AddJournal = () => {
-    navigate("/");
+    navigate("/newjournal");
   };
 
   const EditJournal = (_id) => {

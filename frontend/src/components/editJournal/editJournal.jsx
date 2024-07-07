@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import classes from "./NewJournal.module.css";
+import classes from "./EditJournal.module.css";
 import { FaArrowLeft } from "react-icons/fa6";
 import { FaSignOutAlt } from "react-icons/fa";
 import { FiSave } from "react-icons/fi";
@@ -14,7 +14,7 @@ import "react-calendar/dist/Calendar.css";
 import "react-clock/dist/Clock.css";
 import axios from "axios";
 
-export default function NewJournal() {
+export default function EditJournal() {
   const navigate = useNavigate();
   const [text, setText] = useState("");
   const textAreaRef = useRef(null);
@@ -80,7 +80,7 @@ export default function NewJournal() {
           photoUrl: photoUrl,
         };
         axios
-          .post("http://localhost:8080/journal/create", newJournal, {
+          .post("http://localhost:8080/journal/", newJournal, {
             headers: { "x-auth-token": `${localStorage.getItem("token")}` },
           })
           .then((res) => {});
