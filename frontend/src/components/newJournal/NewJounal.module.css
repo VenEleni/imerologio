@@ -90,8 +90,35 @@ textarea:focus {
   justify-content: center;
 }
 
+.tagsPopupContainer {
+  position: fixed;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  color: rgb(88, 87, 87);
+}
 
+.tagsPopupWrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px; /* Fixed width */
+  height: 400px; /* Fixed height */
+  background-color: rgb(139, 144, 145);
+}
 
+.tagsCloseBtn{
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 2rem;
+}
+
+.tagsSelection{
+  margin-top: 50px;
+  margin: 0 20px;
+  width: auto;
+}
 
 
 /* Responsive Design */

@@ -21,7 +21,6 @@ function App() {
     <div className="App">
 
       {/* pass true to isEditor and the other Navbar will appear */}
-      <Navbar isEditor={false}/>
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -36,7 +35,7 @@ function App() {
         <Route path="/calendar" element={<OurCalendar />} />
 
       </Routes>
-      <Footer/>
+      
     </div>
   );
 }
