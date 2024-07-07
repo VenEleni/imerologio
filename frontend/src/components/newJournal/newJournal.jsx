@@ -6,7 +6,11 @@ import { FiSave } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
 import logo from "../../assets/imerologio-logo.png";
+
 import Multiselect from "multiselect-react-dropdown";
+
+import axios from "axios"
+
 
 import DatePicker from "react-datetime-picker";
 import "react-datetime-picker/dist/DateTimePicker.css";
@@ -18,6 +22,9 @@ export default function NewJournal() {
   const [text, setText] = useState("");
   const textAreaRef = useRef(null);
   const [date, setDate] = useState(new Date());
+  const [tags, setTags] = useState([])
+  const [photoUrl, setPhotoUrl] = useState("")
+  const [emotion, setEmotion] = useState([])
 
   const [options, setOptions] = useState([
     { name: 'Option 1️⃣', id: 1 },
@@ -51,6 +58,7 @@ export default function NewJournal() {
 
 
 
+
   function onSelect(selectedList, selectedItem) {
     setSelectedValue(selectedList);
 }
@@ -62,6 +70,17 @@ function onRemove(selectedList, removedItem) {
 const toggleTagsPopup = () => {
   setShowTagsPopup(!showTagsPopup);
 };
+
+  const handleAddJournal =  () => {
+    const newJournal = {text: text, date: date, tag : tags, photoUrl: photoUrl, emotion:emotion}
+    axios.post("http://localhost:8080/journal/create", newJournal , {headers:{"x-auth-token": `${localStorage.getItem("token")}`}} )
+    .then((res) => {
+      console.log(res.data)
+    })
+  }
+
+
+
 
   return (
     <div className={classes.journalContainer}>
@@ -75,7 +94,7 @@ const toggleTagsPopup = () => {
           value={date}
           locale="ge-GE"
         />
-        <Link className={classes.saveLabel}>
+        <Link onClick={()=> handleAddJournal} className={classes.saveLabel}>
           Save! <FiSave className={classes.saveIcon} />
         </Link>
       </div>
