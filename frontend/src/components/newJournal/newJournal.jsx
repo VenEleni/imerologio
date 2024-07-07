@@ -119,22 +119,7 @@ const toggleTagsPopup = () => {
 
   return (
     <div className={classes.journalContainer}>
-      <header className={classes.header}>
-        <Link>
-          <FaArrowLeft
-            onClick={() => navigate("/journals")}
-            className={classes.backIcon}
-          />
-        </Link>
-        <img src={logo} alt="" className={classes.logo} />
-        <Link>
-          <FaSignOutAlt
-            onClick={handleSignOut}
-            className={classes.logout}
-          />
-        </Link>
-      </header>
-
+      <Navbar isEditor={true}></Navbar>
       <div className={classes.row1}>
         <DatePicker
           className={classes.datePicker}
